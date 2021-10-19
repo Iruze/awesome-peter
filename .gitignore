@@ -1,0 +1,15 @@
+# idea
+.idea/*
+
+### Python template
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Debugged logs
+logs
+
+# awesome tar
+dist/dist-awesome.tar.gz

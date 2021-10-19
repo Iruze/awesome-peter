@@ -12,8 +12,10 @@ import os, re
 from datetime import datetime
 from fabric.api import *
 
-env.hosts = ['3.145.4.63']
-env.key_filename = ['/home/zhangziwen.peter/myaws.pem']
+env.hosts = ['18.222.181.11']
+# 如果ssh不是默认的22端口，需要指定
+env.port = 4446
+env.key_filename = ['/Users/bytedance/important/keys/myaws.pem']
 env.user = 'ubuntu'
 
 db_user = 'root'
@@ -66,7 +68,7 @@ def deploy():
     with cd('%s/%s' % (_REMOTE_BASE_DIR, newdir)):
         sudo('tar -xzvf %s' % _REMOTE_TMP_TAR)
     with cd(_REMOTE_BASE_DIR):
-        sudo('rm -f www')
+        sudo('rm -rf www')
         sudo('ln -s %s www' % newdir)
         sudo('chown www-data:www-data www')
         sudo('chown -R www-data:www-data %s' % newdir)
